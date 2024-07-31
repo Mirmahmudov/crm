@@ -12,8 +12,6 @@ function Signin({ setToken, toast }) {
   const handleLogin = (e) => {
     setLoading(true);
     e.preventDefault();
-
-    // console.log(username, password);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -61,7 +59,7 @@ function Signin({ setToken, toast }) {
       <div className="signInContainer">
         <div className="loginContainer">
           <div className="logoContainer">
-            <img src="./public/imgs/download.png" className="logo" alt="logo" />
+            <img src="/imgs/download.png" className="logo" alt="logo" />
           </div>
           <p className="getStarted">Let's get started!</p>
           <p className="loginMessage">Login to continue</p>

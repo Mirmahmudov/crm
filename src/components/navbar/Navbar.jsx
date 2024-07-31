@@ -9,7 +9,7 @@ function Navbar() {
       <div className="navbar">
         <a href="localhost:3000">
           <div className="headerlogo">
-            <img src="./public/imgs/download.png" alt="" />
+            <img src="/imgs/download.png" alt="" />
           </div>
         </a>
         <div className="wrapper">

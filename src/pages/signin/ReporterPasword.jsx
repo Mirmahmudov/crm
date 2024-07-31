@@ -60,7 +60,7 @@ function ReporterPasword({ toast, setToken }) {
       <div className="signInContainer">
         <div className="loginContainer">
           <div className="logoContainer">
-            <img src="./public/imgs/download.png" className="logo" alt="logo" />
+            <img src="/imgs/download.png" className="logo" alt="logo" />
           </div>
           <p className="getStarted">Let's get started!</p>
           <form onSubmit={handlePassword} className="formField">
