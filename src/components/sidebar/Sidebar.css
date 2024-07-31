@@ -1,0 +1,79 @@
+.sidebar {
+  flex: 1;
+}
+
+.sidebar .top {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .top .logo {
+  cursor: pointer;
+  margin: 0 auto;
+  width: 120px;
+  object-fit: cover;
+}
+
+.sidebar .centre {
+  width: 200px;
+}
+
+.sidebar .centre ul {
+  width: 200px;
+  padding-left: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.sidebar .centre ul a,
+.sidebar .centre ul .texts {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(65, 88, 90);
+  text-transform: capitalize;
+}
+.sidebar .centre ul li {
+  width: 200px;
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+}
+.sidebar .centre ul li svg,
+.sidebar .centre ul .ListClick {
+  /* width: 50px; */
+  color: rgb(65, 88, 90);
+
+  font-size: 25px;
+}
+
+.sidebar .centre ul li:hover {
+  background-color: rgb(215, 254, 255);
+}
+.sidebar .centre ul li span,
+.sidebar .centre ul .texts {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+.sidebar .centre ul .List_button {
+  padding: 13px 15px !important;
+  margin: 0px !important;
+}
+
+.sidebar .centre ul .List_button:hover {
+  background-color: rgb(215, 254, 255) !important;
+}
+
+.sidebar .centre ul .btns:hover {
+  background-color: rgb(215, 254, 255) !important;
+}
+.sidebar .centre ul .ListClick {
+  padding: 5px 0px !important;
+}

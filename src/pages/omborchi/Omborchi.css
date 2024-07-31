@@ -1,0 +1,288 @@
+.omborchi,
+.products {
+  width: 100%;
+}
+.omborchi .tables {
+  height: 90%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.topbar a {
+  color: rgb(0, 134, 187);
+  font-size: 23px;
+}
+.topbar span {
+  font-size: 20px;
+  color: rgb(0, 134, 187);
+  text-transform: capitalize;
+}
+
+.omborchi table {
+  border-collapse: collapse;
+  text-transform: capitalize;
+  color: rgb(65, 88, 90);
+}
+.omborchi table th {
+  font-weight: 600;
+  padding: 10px 20px;
+  text-align: start;
+  cursor: pointer;
+}
+
+table th span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+table th span svg {
+  color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+table th:hover span svg {
+  color: rgb(65, 88, 90);
+}
+.omborchi table tr {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+}
+.omborchi table td {
+  font-weight: 400;
+  padding: 10px 20px;
+}
+
+.omborchi table td svg {
+  color: rgb(0, 134, 187);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.omborchi .addModal,
+.omborchi .viewModal,
+.omborchi .editModal,
+.units .addModal,
+.units .viewModal,
+.units .editModal {
+  position: fixed;
+  right: -1000px;
+  top: -1000px;
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+}
+.omborchi .addModal.active,
+.omborchi .viewModal.active,
+.omborchi .editModal.active,
+.units .addModal.active,
+.units .viewModal.active,
+.units .editModal.active {
+  top: 0px;
+  right: 0;
+  transform: scale(1);
+  background-color: rgba(0, 0, 0, 0.486);
+}
+
+.omborchi .addModal form,
+.omborchi .editModal form,
+.units .addModal form,
+.units .editModal form {
+  position: relative;
+  width: 60%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+}
+.units .addModal form,
+.units .editModal form {
+  width: 30%;
+}
+.omborchi .addModal form .div,
+.omborchi .editModal form .div,
+.units .editModal form .div,
+.units .addModal form .div {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.units .addModal form .div,
+.units .editModal form .div {
+  width: 100%;
+  text-align: center;
+}
+.omborchi .addModal form h3,
+.omborchi .viewModal .box h3,
+.omborchi .editModal form h3,
+.units .viewModal .box h3,
+.units .editModal form h3,
+.units .addModal form h3 {
+  width: 100%;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: rgb(0, 134, 187);
+  text-transform: capitalize;
+}
+.omborchi .addModal form input,
+.omborchi .editModal form input,
+.units .editModal form input,
+.units .addModal form input {
+  padding: 10px;
+  font-size: 14px;
+  outline-style: 0.3px solid;
+  outline: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: 400;
+}
+
+.omborchi .addModal form input::placeholder,
+.omborchi .editModal form input::placeholder,
+.units .editModal form input::placeholder,
+.units .addModal form input::placeholder {
+  font-weight: 300;
+}
+
+.omborchi .addModal form label,
+.omborchi .editModal form label,
+.units .editModal form label,
+.units .addModal form label {
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.omborchi .addModal form .exit,
+.omborchi .editModal form .exit,
+.omborchi .viewModal .box .exit,
+.units .editModal form .exit,
+.units .viewModal .box .exit,
+.units .addModal form .exit {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+
+  background-color: #fff;
+  border-radius: 0.5rem;
+  opacity: 1;
+  padding: 0.635rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+  transition: all 0.23s ease-in-out;
+  transform: translate(23px, -25px);
+}
+
+.omborchi .addModal form .exit:hover,
+.omborchi .editModal form .exit:hover,
+.omborchi .viewModal .box .exit:hover,
+.units .editModal form .exit:hover,
+.units .viewModal .box .exit:hover,
+.units .addModal form .edit:hover {
+  transform: translate(20px, -23px);
+}
+.omborchi .addModal form .exit:active,
+.omborchi .editModal form .exit:active,
+.omborchi .viewModal .box .exit:active,
+.units .addModal form .exit:active,
+.units .editModal form .exit:active,
+.units .viewModal .box .exit:active {
+  transform: translate(18px, -20px);
+}
+
+.omborchi .addModal form .btn,
+.omborchi .editModal form .btn,
+.omborchi .viewModal .box .btns,
+.units .editModal form .btn,
+.units .viewModal .box .btns,
+.units .addModal form .btn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+}
+
+.omborchi .addModal form .btn button,
+.omborchi .editModal form .btn button,
+.omborchi .viewModal .box .btns button,
+.units .editModal form .btn button,
+.units .viewModal .box .btns button,
+.units .addModal form .btn button {
+  text-transform: capitalize;
+  padding: 5px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid rgb(0, 134, 187);
+  color: rgb(0, 134, 187);
+  background-color: transparent;
+  color: rgb(0, 134, 187);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.omborchi .addModal form .btn button:hover,
+.omborchi .editModal form .btn button:hover,
+.omborchi .viewModal .box .btns .edit:hover,
+.units .addModal form .btn button:hover,
+.units .editModal form .btn button:hover,
+.units .viewModal .box .btns .edit:hover {
+  background-color: rgb(0, 134, 187);
+  color: white;
+}
+.omborchi .viewModal .box,
+.units .viewModal .box {
+  position: relative;
+  width: 60%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+}
+
+.omborchi .viewModal .box .btns .close,
+.units .viewModal .box .btns .close {
+  border: 1px solid rgb(65, 88, 90);
+  color: rgb(65, 88, 90);
+}
+.omborchi .viewModal .box .btns .close:hover,
+.units .viewModal .box .btns .close:hover {
+  background-color: rgb(65, 88, 90);
+  color: white;
+}
+
+.omborchi .viewModal .box h4 span,
+.units .viewModal .box h4 span {
+  text-transform: capitalize;
+  display: inline-block;
+  width: 120px !important;
+  /* background-color: red; */
+}

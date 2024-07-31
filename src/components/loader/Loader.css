@@ -1,0 +1,15 @@
+.loader {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: black;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  z-index: 9999999;
+  background-color: rgba(0, 255, 255, 0.192);
+}

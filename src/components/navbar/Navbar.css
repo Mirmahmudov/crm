@@ -1,0 +1,79 @@
+.navbar {
+  height: 50px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 14px;
+}
+.navbar .wrapper {
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .wrapper .items {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.navbar .wrapper .items .item {
+  display: flex;
+  align-items: center;
+  margin: 80px;
+  cursor: pointer;
+  position: relative;
+}
+
+.navbar .wrapper .items .item:hover {
+  color: rgb(65, 88, 90);
+}
+.navbar .wrapper .items .item .icon {
+  align-items: flex-end;
+  font-size: 25px;
+}
+
+.navbar .wrapper .items .item .counter {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(60, 186, 228);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  right: -5px;
+}
+
+.navbar .wrapper .items .avatar {
+  cursor: pointer;
+  margin-right: -10px;
+  margin-left: -50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navbar .headerlogo {
+  cursor: pointer;
+  display: flex;
+  width: auto;
+  height: 50px;
+  margin: 40px;
+  margin-top: 80px;
+}
+.navbar .headerlogo img {
+  width: 100%;
+}
+.navbar .space {
+  display: flex;
+  flex: 7;
+  justify-content: space-between;
+}

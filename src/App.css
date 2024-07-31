@@ -1,0 +1,106 @@
+.list {
+  flex: 1;
+  display: flex;
+}
+
+.list .listContainer {
+  flex: 11;
+  flex-direction: column;
+  height: 80px;
+}
+
+.list .listContainer .bodyContainer {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+.list .listContainer .bodyContainer .records {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.list .listContainer .bodyContainer .records .topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list .listContainer .bodyContainer .records .topbar span,
+.list .listContainer .bodyContainer .records .topbar .addicon {
+  display: flex;
+  flex: 1;
+  letter-spacing: 1px;
+  color: rgb(0, 134, 187);
+  font-weight: 500;
+}
+.list .listContainer .bodyContainer .records .topbar .addicon {
+  cursor: pointer;
+}
+.list .listContainer .bodyContainer .records .recordsbody {
+  display: flex;
+  flex: 1;
+  height: 50vh;
+}
+.list .listContainer .bodyContainer .records .recordsbody .datatable {
+  display: flex;
+  flex: 1;
+}
+.list .listContainer .bodyContainer .records hr {
+  display: flex;
+}
+
+/* Home */
+
+.home {
+  flex: 1;
+  display: flex;
+}
+
+.home .homeContainer {
+  display: flex;
+  flex: 1;
+  height: 80px;
+}
+.home .homeContainer .widgets {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  height: 70vh;
+}
+.home .homeContainer .widgets .breaker {
+  display: flex;
+}
+.list .listContainer .bodyContainer {
+  display: flex;
+  flex: 1 1;
+  padding: 20px;
+  gap: 20px;
+}
+.backing {
+  display: flex;
+  flex: 1 1;
+  padding: 20px;
+  box-shadow: 2px 4px 10px 1px rgba(202, 202, 202, 0.47);
+  /* margin: px; */
+  margin-top: 30px;
+  margin-left: -5px;
+  margin-right: -5px;
+  color: rgb(65, 88, 90);
+  height: 78vh;
+  min-height: 455px;
+  border: 3px;
+  box-sizing: border-box;
+}
+
+.backing .widget {
+  background-color: white;
+  display: flex;
+  flex: 1 1;
+  padding: 20px;
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  color: rgb(65, 88, 90);
+  width: 895px;
+  
+}
