@@ -76,19 +76,21 @@
 
 .modal form {
   position: relative;
-  width: 60%;
+  width: 40%;
   border-radius: 10px;
   background-color: white;
   padding: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+  flex-direction: column;
 }
 
 .modal form .div {
-  width: 45%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
