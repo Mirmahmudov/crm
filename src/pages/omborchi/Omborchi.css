@@ -223,6 +223,7 @@ table th:hover span svg {
   justify-content: end;
   align-items: center;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .omborchi .addModal form .btn button,
@@ -256,7 +257,7 @@ table th:hover span svg {
 .omborchi .viewModal .box,
 .units .viewModal .box {
   position: relative;
-  width: 60%;
+  width: 30%;
   border-radius: 10px;
   background-color: white;
   padding: 30px;

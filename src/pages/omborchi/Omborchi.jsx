@@ -276,7 +276,6 @@ function Omborchi({ toast }) {
                 <th>
                   <span>
                     View
-                    {renderArrow()}
                   </span>
                 </th>
               </tr>
