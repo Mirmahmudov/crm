@@ -5,7 +5,7 @@ function LoaderAnimation() {
   return (
     <>
       <div className="loader">
-        <img src="./public/imgs/loader.gif" alt="" />
+        <img src="/imgs/loader.gif" alt="" />
       </div>
     </>
   );

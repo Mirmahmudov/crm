@@ -67,96 +67,16 @@ function Reports({ toast }) {
 
   // sort
 
-  const sortByName = (order = sorting) => {
-    const sortedData = [...data].sort((a, b) => {
-      const nameA = a.product.name.toUpperCase(); // Ignore upper and lowercase
-      const nameB = b.product.name.toUpperCase(); // Ignore upper and lowercase
-      if (nameA < nameB) {
-        return order === true ? -1 : 1;
-      }
-      if (nameA > nameB) {
-        return order === true ? 1 : -1;
-      }
-      return 0;
-    });
-    setData(sortedData);
-  };
-  const sortPassword = (order = sorting) => {
-    const sortedData = [...data].sort((a, b) => {
-      const nameA = a.product.prod_code.toUpperCase(); // Ignore upper and lowercase
-      const nameB = b.product.prod_code.toUpperCase(); // Ignore upper and lowercase
-      if (nameA < nameB) {
-        return order === true ? -1 : 1;
-      }
-      if (nameA > nameB) {
-        return order === true ? 1 : -1;
-      }
-      return 0;
-    });
-    setData(sortedData);
-  };
-  const sortUnit = (order = sorting) => {
-    const sortedData = [...data].sort((a, b) => {
-      const nameA = a.product.unit.toUpperCase(); // Ignore upper and lowercase
-      const nameB = b.product.unit.toUpperCase(); // Ignore upper and lowercase
-      if (nameA < nameB) {
-        return order === true ? -1 : 1;
-      }
-      if (nameA > nameB) {
-        return order === true ? 1 : -1;
-      }
-      return 0;
-    });
-    setData(sortedData);
-  };
-
   const renderArrow = () => {
     if (sorting) {
       return <FaArrowUp />;
     }
     return <FaArrowDown />;
   };
-  // sortPrice
-  const sortBeginningByPrice = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const priceA = parseFloat(a.beginning.price);
-      const priceB = parseFloat(b.beginning.price);
-
-      if (order === true) {
-        return priceA - priceB;
-      } else if (order === false) {
-        return priceB - priceA;
-      }
-    });
-  };
-  const sortInputByPrice = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const priceA = parseFloat(a.input.price);
-      const priceB = parseFloat(b.input.price);
-
-      if (order === true) {
-        return priceA - priceB;
-      } else if (order === false) {
-        return priceB - priceA;
-      }
-    });
-  };
-  const sortOutputByPrice = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const priceA = parseFloat(a.output.price);
-      const priceB = parseFloat(b.output.price);
-
-      if (order === true) {
-        return priceA - priceB;
-      } else if (order === false) {
-        return priceB - priceA;
-      }
-    });
-  };
-  const sortLastByPrice = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const priceA = parseFloat(a.last.last_price);
-      const priceB = parseFloat(b.last.last_price);
+  const sortByKey = (data, key, order = sorting) => {
+    return data.sort((a, b) => {
+      const priceA = parseFloat(a.product[key]);
+      const priceB = parseFloat(b.product[key]);
 
       if (order === true) {
         return priceA - priceB;
@@ -166,56 +86,68 @@ function Reports({ toast }) {
     });
   };
 
-  // sortquantity
+  const sortData = (criteria) => {
+    const sortedData = [...data].sort((a, b) => {
+      let valA, valB;
+      switch (criteria) {
+        case "beginning_quantity":
+          valA = parseFloat(a.beginning.quantity);
+          valB = parseFloat(b.beginning.quantity);
+          break;
+        case "beginning_price":
+          valA = parseFloat(a.beginning.price);
+          valB = parseFloat(b.beginning.price);
+          break;
+        case "input_quantity":
+          valA = parseFloat(a.input.quantity);
+          valB = parseFloat(b.input.quantity);
+          break;
+        case "input_price":
+          valA = parseFloat(a.input.price);
+          valB = parseFloat(b.input.price);
+          break;
+        case "output_quantity":
+          valA = parseFloat(a.output.quantity);
+          valB = parseFloat(b.output.quantity);
+          break;
+        case "output_price":
+          valA = parseFloat(a.output.price);
+          valB = parseFloat(b.output.price);
+          break;
+        case "last_quantity":
+          valA = parseFloat(a.last.quantity);
+          valB = parseFloat(b.last.quantity);
+          break;
+        case "last_price":
+          valA = parseFloat(a.last.last_price);
+          valB = parseFloat(b.last.last_price);
+          break;
+        default:
+          return 0;
+      }
 
-  const sortBeginningByQuantity = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const quantityA = parseFloat(a.beginning.quantity);
-      const quantityB = parseFloat(b.beginning.quantity);
-
-      if (order === true) {
-        return quantityA - quantityB;
-      } else if (order === false) {
-        return quantityB - quantityA;
+      if (sorting === true) {
+        return valA - valB;
+      } else {
+        return valB - valA;
       }
     });
+    setData(sortedData);
   };
 
-  const sortInputByQuantity = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const quantityA = parseFloat(a.input.quantity);
-      const quantityB = parseFloat(b.input.quantity);
-
-      if (order === true) {
-        return quantityA - quantityB;
-      } else if (order === false) {
-        return quantityB - quantityA;
+  const sortByName = (key, order = sorting) => {
+    const sortedData = [...data].sort((a, b) => {
+      const nameA = a.product[key].toUpperCase(); // Ignore upper and lowercase
+      const nameB = b.product[key].toUpperCase(); // Ignore upper and lowercase
+      if (nameA < nameB) {
+        return order === true ? -1 : 1;
       }
-    });
-  };
-  const sortOutputByQuantity = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const quantityA = parseFloat(a.output.quantity);
-      const quantityB = parseFloat(b.output.quantity);
-
-      if (order === true) {
-        return quantityA - quantityB;
-      } else if (order === false) {
-        return quantityB - quantityA;
+      if (nameA > nameB) {
+        return order === true ? 1 : -1;
       }
+      return 0;
     });
-  };
-  const sortLastByQuantity = (products, order = sorting) => {
-    return products.sort((a, b) => {
-      const quantityA = parseFloat(a.last.quantity);
-      const quantityB = parseFloat(b.last.quantity);
-
-      if (order === true) {
-        return quantityA - quantityB;
-      } else if (order === false) {
-        return quantityB - quantityA;
-      }
-    });
+    setData(sortedData);
   };
   // Filter
 
@@ -236,10 +168,7 @@ function Reports({ toast }) {
 
   const fetchData = async (startDate, endDate) => {
     const myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNzg2MDc4LCJpYXQiOjE3MjIzNTQwNzgsImp0aSI6ImIzODE4Y2UzNzVkZjQzODU5MGNlYTIzOTFmMmFkMzBkIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJjYmVrb2RlciIsImVtYWlsIjoiIn0.-Gtnhwl8BL4bZj0USosw12wE2iWwj13dZOLvbs-a8dY"
-    );
+    myHeaders.append("Authorization", `Bearer  ${token}`);
 
     const requestOptions = {
       method: "GET",
@@ -340,7 +269,6 @@ function Reports({ toast }) {
             <thead>
               <tr>
                 <th rowSpan={3}>№</th>
-                <th rowSpan={3}>Tekshirish</th>
 
                 <th colSpan={2} rowSpan={2}>
                   mahsulotlar
@@ -348,7 +276,7 @@ function Reports({ toast }) {
                 <th
                   rowSpan={3}
                   onClick={() => {
-                    sortByName();
+                    sortByName("unit");
                     setSorting(!sorting);
                   }}
                 >
@@ -370,7 +298,7 @@ function Reports({ toast }) {
               <tr>
                 <th
                   onClick={() => {
-                    sortByName();
+                    sortByName("name");
                     setSorting(!sorting);
                   }}
                 >
@@ -381,7 +309,8 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortPassword();
+                    sortByKey(data, "prod_code");
+
                     setSorting(!sorting);
                   }}
                 >
@@ -392,7 +321,7 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortBeginningByPrice(data);
+                    sortData("beginning_quantity");
                     setSorting(!sorting);
                   }}
                 >
@@ -403,7 +332,7 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortBeginningByQuantity(data);
+                    sortData("beginning_price");
                     setSorting(!sorting);
                   }}
                 >
@@ -414,7 +343,29 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortInputByPrice(data);
+                    sortData("input_quantity");
+                    setSorting(!sorting);
+                  }}
+                >
+                  <span>
+                    miqdori
+                    {renderArrow()}
+                  </span>
+                </th>
+                <th
+                  onClick={() => {
+                    sortData("input_price");
+                    setSorting(!sorting);
+                  }}
+                >
+                  <span>
+                    so'm
+                    {renderArrow()}
+                  </span>
+                </th>
+                <th
+                  onClick={() => {
+                    sortData("output_quantity");
 
                     setSorting(!sorting);
                   }}
@@ -426,7 +377,7 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortInputByQuantity(data);
+                    sortData("output_price");
 
                     setSorting(!sorting);
                   }}
@@ -438,8 +389,7 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortOutputByPrice(data);
-
+                    sortData("last_quantity");
                     setSorting(!sorting);
                   }}
                 >
@@ -450,31 +400,7 @@ function Reports({ toast }) {
                 </th>
                 <th
                   onClick={() => {
-                    sortOutputByQuantity(data);
-
-                    setSorting(!sorting);
-                  }}
-                >
-                  <span>
-                    so'm
-                    {renderArrow()}
-                  </span>
-                </th>
-                <th
-                  onClick={() => {
-                    sortLastByPrice(data);
-
-                    setSorting(!sorting);
-                  }}
-                >
-                  <span>
-                    miqdori
-                    {renderArrow()}
-                  </span>
-                </th>
-                <th
-                  onClick={() => {
-                    sortLastByQuantity(data);
+                    sortData("last_price");
 
                     setSorting(!sorting);
                   }}
@@ -491,7 +417,6 @@ function Reports({ toast }) {
                 return (
                   <tr key={item.product.id}>
                     <td>{index + 1}</td>
-                    <td>1</td>
                     <td>{item.product.name}</td>
                     <td>{item.product.prod_code}</td>
                     <td>{item.product.unit}</td>

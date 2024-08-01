@@ -5,7 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import { FaArrowDown, FaArrowUp, FaDownload, FaRegEye } from "react-icons/fa";
 import LoaderAnimation from "../../components/loader/LoaderAnimation";
 
-function ReportsInput() {
+function ReportsInput({ toast }) {
   const token = localStorage.getItem("crmToken");
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
@@ -75,42 +75,69 @@ function ReportsInput() {
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  const [error, setError] = useState("");
+
+  const fetchData = async (startDate, endDate) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer  ${token}`);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    const apiUrl = `
+https://omborxonacrm.pythonanywhere.com/stats/inputs/?start_date=${startDate}&end_date=${endDate}`;
+
+    try {
+      const response = await fetch(apiUrl, requestOptions);
+      console.log(response);
+
+      if (!response.ok) {
+        console.log(response);
+        throw new Error("Network response was not ok");
+      }
+      const result = await response.json();
+      console.log(result);
+      setData(result);
+    } catch (error) {
+      console.error("Error fetching the data:", error);
+      setData(null);
+      setError("Error fetching the data");
+    }
+  };
 
   useEffect(() => {
-    // Agar startDate bo'sh bo'lsa, barcha ma'lumotlarni ko'rsatish
-    if (!startDate && !endDate) {
-      setData(baseData);
-      return;
+    if (startDate) {
+      const today = new Date().toISOString().split("T")[0];
+      const endDateOrToday = endDate || today;
+      if (new Date(startDate) > new Date(endDateOrToday)) {
+        setError(
+          "Start date cannot be after end date. Setting end date to today."
+        );
+        setEndDate(today);
+        setStartDate(today);
+        toast.error(
+          "Boshlanish sanasi tugash sanasidan keyin bo`lishi mumkin emas !"
+        );
+      } else {
+        setError("");
+        if (startDate === endDateOrToday) {
+          fetchData(startDate, startDate);
+        } else {
+          fetchData(startDate, endDateOrToday);
+        }
+      }
     }
-
-    // Agar startDate bo'lsa, uning qiymatini olish
-    const start = startDate ? new Date(startDate) : new Date(0);
-    let end = endDate ? new Date(endDate) : new Date();
-
-    // Agar endDate bo'sh bo'lsa, uni bugungi sana bilan to'ldirish
-    if (!endDate) {
-      end = new Date();
-      setEndDate(end.toISOString().split("T")[0]);
-    }
-
-    // Agar startDate endDate'dan katta bo'lsa, alert ko'rsatish
-    if (start > end) {
-      alert("Boshlanish sanasi tugash sanasidan keyin bo'lishi mumkin emas!");
-      setStartDate(""); // Bo'shatish yoki avvalgi qiymatni tiklash
-      setEndDate("");
-      setData(baseData);
-      return;
-    }
-
-    // Filtrlash
-    const filtered = baseData.filter((item) => {
-      const createdAt = new Date(item.created_at);
-      return createdAt >= start && createdAt <= end;
-    });
-
-    setData(filtered);
   }, [startDate, endDate]);
+
+  useEffect(() => {
+    if (startDate && !endDate) {
+      const today = new Date().toISOString().split("T")[0];
+      setEndDate(today);
+    }
+  }, [startDate]);
 
   // sort
   const [sorting, setSorting] = useState(false);
@@ -168,49 +195,22 @@ function ReportsInput() {
       <div className="reportsInput">
         <div className="topbar">
           <div className="recordstext">
-            <span>hisobtlarni kiritish</span>
+            <span>hisobotlarni kiritish</span>
           </div>
           <div className="sort">
             <input
               type="date"
+              id="start_date"
               value={startDate}
-              onChange={(e) => {
-                const newStartDate = e.target.value;
-                const start = new Date(newStartDate);
-                const end = endDate ? new Date(endDate) : new Date();
-
-                // Agar yangi startDate endDate'dan katta bo'lsa, alert ko'rsatish
-                if (start > end) {
-                  alert(
-                    "Boshlanish sanasi tugash sanasidan keyin bo'lishi mumkin emas!"
-                  );
-                  return;
-                }
-
-                setStartDate(newStartDate);
-              }}
-              placeholder="Boshlanish sanasi"
+              onChange={(e) => setStartDate(e.target.value)}
             />
             <input
               type="date"
+              id="end_date"
               value={endDate}
-              onChange={(e) => {
-                const newEndDate = e.target.value;
-                const start = startDate ? new Date(startDate) : new Date();
-                const end = newEndDate ? new Date(newEndDate) : new Date();
-
-                // Agar endDate startDate'dan kichik bo'lsa, alert ko'rsatish
-                if (start > end) {
-                  alert(
-                    "Tugash sanasi boshlanish sanasidan oldin bo'lishi mumkin emas!"
-                  );
-                  return;
-                }
-
-                setEndDate(newEndDate);
-              }}
-              placeholder="Tugash sanasi"
+              onChange={(e) => setEndDate(e.target.value)}
             />
+
             <select
               onChange={(e) => {
                 categoryFilter(e.target.value);
@@ -283,7 +283,6 @@ function ReportsInput() {
                 <th
                   onClick={() => {
                     sortByName("unit");
-
                     setSorting(!sorting);
                   }}
                 >

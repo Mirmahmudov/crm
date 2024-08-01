@@ -41,7 +41,7 @@ function App() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="colored"
+                theme="light"
                 transition:Bounce
               />
               <div className="bodyContainer">
@@ -100,11 +100,11 @@ function App() {
                         />
                         <Route
                           path="/reportsInput"
-                          element={<ReportsInput />}
+                          element={<ReportsInput toast={toast} />}
                         />
                         <Route
                           path="/reportsOutput"
-                          element={<ReportsOutput />}
+                          element={<ReportsOutput toast={toast} />}
                         />
                       </Routes>
                     )}
