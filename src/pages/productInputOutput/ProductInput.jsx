@@ -54,7 +54,6 @@ function ProductInput({ toast }) {
 
   const inputQuantity = (e) => {
     e.preventDefault();
-    console.log(quantity, id);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -106,7 +105,7 @@ function ProductInput({ toast }) {
               id="combo-box-demo"
               options={data}
               getOptionLabel={(option) =>
-                `${option.name} - ${option.quantity} - ${option.price}`
+                `${option.name} - ${option.prod_code} - ${option.price}`
               }
               sx={{ width: 300 }}
               onChange={handleChange}
@@ -120,11 +119,11 @@ function ProductInput({ toast }) {
                     <span>{option.name}</span>
                   </div>
                   <div className="option-quantity">
-                    <span className="name">Miqdori:</span>
-                    <span> {option.quantity}</span>
+                    <span className="name">mahsulot kodi:</span>
+                    <span> {option.prod_code}</span>
                   </div>
                   <div className="option-price">
-                    <span className="name">Narhi: </span>
+                    <span className="name">Narxi: </span>
                     <span>{option.price}</span>
                   </div>
                 </li>
@@ -132,38 +131,39 @@ function ProductInput({ toast }) {
             />
           </div>
         </div>
-      </div>
-      <div className={modal ? "modal active" : "modal"}>
-        <form onSubmit={inputQuantity} action="">
-          <h3> kelgan mahsulot</h3>
-          <div className="div">
-            <label htmlFor="">mahsulot id raqami</label>
-            <input value={id} type="id" placeholder="55" required />
-          </div>
-          <div className="div">
-            <label htmlFor="">Mahsulot miqdorini kiriting</label>
-            <input
-              value={quantity}
-              onChange={(e) => {
-                setQuantiy(e.target.value);
-              }}
-              type="number"
-              placeholder="550"
-              required
-            />
-          </div>
-          <div className="btn">
-            <button>Add</button>
-          </div>
-          <div
-            onClick={() => {
-              setModal(false);
-            }}
-            className="exit"
-          >
-            <FaXmark />
-          </div>
-        </form>
+        <div className={modal ? "addinput active " : "addinput"}>
+          <form onSubmit={inputQuantity} action="">
+            <div className="div">
+              <label htmlFor="">mahsulot id raqami</label>
+              <input value={id} type="id" placeholder="55" required />
+            </div>
+            <div className="div">
+              <label htmlFor="">Mahsulot miqdorini kiriting</label>
+              <input
+                value={quantity}
+                onChange={(e) => {
+                  setQuantiy(e.target.value);
+                }}
+                type="number"
+                placeholder="550"
+                required
+              />
+            </div>
+            <div className="btn">
+              <button
+                type="button"
+                onClick={() => {
+                  setModal(false);
+                  setQuantiy("");
+                }}
+                className="close"
+              >
+                close
+              </button>
+              <button>Add</button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

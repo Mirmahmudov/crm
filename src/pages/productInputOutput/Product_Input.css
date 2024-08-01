@@ -3,7 +3,7 @@
 }
 .autocomplete-container {
   width: 600px;
-  margin: 70px auto;
+  margin: 0px auto;
   position: relative;
 }
 
@@ -51,60 +51,26 @@
   text-align: left;
 }
 
-.modal {
-  position: fixed;
-  right: -1000px;
-  top: -1000px;
-  min-width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease-in-out;
-  transform: scale(0);
-  z-index: 2;
-}
-
-.modal.active {
-  top: 0px;
-  right: 0;
-  transform: scale(1);
-  background-color: rgba(0, 0, 0, 0.486);
-}
-
-.modal form {
-  position: relative;
-  width: 40%;
-  border-radius: 10px;
-  background-color: white;
+.addinput form {
   padding: 30px;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
   flex-direction: column;
+  display: none;
+}
+.addinput.active form {
+  display: flex;
 }
 
-.modal form .div {
-  width: 80%;
+.addinput form .div {
+  width: 60%;
   display: flex;
   flex-direction: column;
 }
 
-.modal form h3 {
-  width: 100%;
-  font-weight: 500;
-  margin-bottom: 20px;
-  font-size: 25px;
-  color: rgb(0, 134, 187);
-  text-transform: capitalize;
-}
-
-.modal form input {
+.addinput form input {
   padding: 10px;
   font-size: 14px;
   outline-style: 0.3px solid;
@@ -115,52 +81,26 @@
   font-weight: 400;
 }
 
-.modal input::placeholder {
+.addinput input::placeholder {
   font-weight: 300;
 }
-.modal form label {
+.addinput form label {
   font-weight: 400;
   font-size: 16px;
   text-transform: capitalize;
   margin-bottom: 10px;
   cursor: pointer;
 }
-.modal form .exit {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  top: 10px;
-  right: 10px;
 
-  background-color: #fff;
-  border-radius: 0.5rem;
-  opacity: 1;
-  padding: 0.635rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
-  transition: all 0.23s ease-in-out;
-  transform: translate(23px, -25px);
-}
-
-.modal form .edit:hover {
-  transform: translate(20px, -23px);
-}
-
-.modal form .exit:active {
-  transform: translate(18px, -20px);
-}
-
-.modal form .btn {
-  width: 100%;
+.addinput form .btn {
+  width: 60%;
   display: flex;
   justify-content: end;
   align-items: center;
   gap: 20px;
 }
 
-.modal form .btn button {
+.addinput form .btn button {
   text-transform: capitalize;
   padding: 5px 20px;
   font-size: 16px;
@@ -174,7 +114,15 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-.modal form .btn button:hover {
+.addinput form .btn button:hover {
   background-color: rgb(0, 134, 187);
   color: white;
+}
+.addinput .close {
+  border: 1px solid rgb(65, 88, 90) !important;
+  color: rgb(65, 88, 90) !important;
+}
+.addinput .close:hover {
+  background-color: rgb(65, 88, 90) !important;
+  color: white !important;
 }
