@@ -67,7 +67,6 @@ function Units({ toast }) {
     fetch("https://omborxonacrm.pythonanywhere.com/units/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        // console.log(result);
         setData(result);
         setLoader(false);
       })

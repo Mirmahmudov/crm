@@ -166,7 +166,6 @@ function Omborchi({ toast }) {
           setLoader(false);
         } else {
           setLoader(false);
-          // alert("sizga omborchilarni ko'rish huquqi berilmagan ");/
         }
       })
       .catch((error) => console.error(error));

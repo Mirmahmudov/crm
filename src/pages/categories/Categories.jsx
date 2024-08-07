@@ -33,7 +33,6 @@ function Categories({ toast }) {
     fetch("https://omborxonacrm.pythonanywhere.com/categories/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        // console.log(result);
         setData(result);
         setLoader(false);
       })

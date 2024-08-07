@@ -278,7 +278,6 @@ function Product({ toast }) {
 
   const [categoryData, setCategoryData] = useState();
   const [unitData, setUnitData] = useState();
-  // console.log(unitData);
 
   const getCategory = () => {
     const myHeaders = new Headers();
@@ -293,7 +292,6 @@ function Product({ toast }) {
     fetch("https://omborxonacrm.pythonanywhere.com/categories/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        // console.log(result);
         setCategoryData(result);
       })
       .catch((error) => console.error(error));

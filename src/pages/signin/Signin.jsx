@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signin.css";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Box, TextField } from "@mui/material";
 
 function Signin({ setToken, toast }) {
   const [username, setUsername] = useState("");
@@ -58,25 +59,24 @@ function Signin({ setToken, toast }) {
     <>
       <div className="signInContainer">
         <div className="loginContainer">
-          <div className="logoContainer">
-            <img src="/imgs/download.png" className="logo" alt="logo" />
-          </div>
-          <p className="getStarted">Let's get started!</p>
-          <p className="loginMessage">Login to continue</p>
+         
+          <h1>login</h1>
           <form onSubmit={handleLogin} className="formField">
-            <input
-              type="name"
-              placeholder="Username "
+            <TextField
               required
+              id="outlined-required"
+              label="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
 
             <div className="inputs">
-              <input
+              <TextField
+                id="outlined-password-input"
+                label="Password"
                 type={!eye ? "Password" : "text"}
-                placeholder="Password"
-                required
+                autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <span
                 className="eyeClick"
@@ -87,20 +87,30 @@ function Signin({ setToken, toast }) {
                 {passwordEye()}
               </span>
             </div>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "25ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <div></div>
+            </Box>
             <button className="button">
               {loading ? "Loading ...." : "Login"}
             </button>
           </form>
 
-          <div className="forgotPassword">
-            <Link to={"/"}> Forgot password?</Link>
-            <br />
-          </div>
+        
           <hr />
           <div className="signUp">
-            <p>do you need documents?</p>
+            <p>Do you need documents?</p>
             <Link to={"/password"}>documents</Link>
           </div>
+        </div>
+        <div className="login_img test">
+          <img src="/imgs/passwordImg.png" alt="" />
         </div>
       </div>
     </>

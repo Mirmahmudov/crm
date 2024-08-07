@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -36,11 +37,10 @@ function ReporterPasword({ toast, setToken }) {
           setToken(localStorage.getItem("crmToken"));
           setLoading(false);
           toast.success("muvaffaqiyatli ro'yhatdan o'tildi");
-          navigate("/")
+          navigate("/");
         } else {
           toast.error("parolda hatolik bor");
           setLoading(false);
-
         }
       })
       .catch((error) => {
@@ -59,19 +59,20 @@ function ReporterPasword({ toast, setToken }) {
     <>
       <div className="signInContainer">
         <div className="loginContainer">
-          <div className="logoContainer">
-            <img src="/imgs/download.png" className="logo" alt="logo" />
-          </div>
-          <p className="getStarted">Let's get started!</p>
+         
+          <h1>Password</h1>
+
           <form onSubmit={handlePassword} className="formField">
             <div className="inputs">
-              <input
+            <TextField
+                id="outlined-password-input"
+                label="Password"
                 type={!eye ? "Password" : "text"}
-                placeholder="Password"
-                required
+                autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
-                className="inputTest"
+                required
               />
+            
               <span
                 className="eyeClick"
                 onClick={() => {
@@ -86,15 +87,15 @@ function ReporterPasword({ toast, setToken }) {
               {loading ? "Loading ...." : "continue"}{" "}
             </button>
           </form>
-          <div className="forgotPassword">
-            <a href="forgot-password">Forgot password?</a>
-          </div>
-          <hr />
+         
 
           <div className="signUp">
             <p>Already have an account?</p>
             <Link to={"/"}>Sign In</Link>
           </div>
+        </div>
+        <div className="login_img test">
+          <img src="/imgs/passwordImg2.png" alt="" />
         </div>
       </div>
     </>

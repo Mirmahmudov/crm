@@ -295,7 +295,6 @@ https://omborxonacrm.pythonanywhere.com/stats/outputs/?start_date=${startDate}&e
             </thead>
             <tbody>
               {data?.map((item, index) => {
-                // console.log(item);
                 return (
                   <tr key={item.id}>
                     <td>{index + 1}</td>

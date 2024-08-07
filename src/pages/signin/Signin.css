@@ -1,18 +1,16 @@
 .signInContainer {
+  margin: 0 auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: rgb(9, 47, 121);
-  background: radial-gradient(
-    circle,
-    rgba(9, 47, 121, 1) 0%,
-    rgb(212, 239, 255) 0%,
-    rgb(68, 183, 255) 100%
-  );
+  background: white;
+  gap: 100px;
+
   display: flex;
   flex: 1;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -21,14 +19,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 40px;
   min-width: 383px;
   min-height: 383px;
 
   background-color: white;
   height: 50vh;
   width: 50vh;
-  margin-top: 25vh;
 
   -webkit-box-shadow: 0px 10px 13px -7px #424242,
     5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -38,33 +35,30 @@
 .signInContainer .loginContainer .formField {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   width: 95%;
+  margin-bottom: 10px;
 }
 
 .signInContainer .loginContainer .formField input {
   display: flex;
-  flex: 1;
-  padding: 5px;
-  margin: 5px;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  outline: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
 }
-.signInContainer .loginContainer .formField input:hover {
-  border-color: rgb(50, 184, 247);
+.signInContainer .loginContainer .formField label {
+  top: 0px;
+  margin-top: -5px;
 }
+
 .signInContainer .loginContainer .formField .button {
   justify-content: center;
   border-bottom: none;
-  background-image: linear-gradient(
-    to right,
-    rgb(243, 243, 243),
-    rgb(0, 217, 255)
-  );
+  background-color: #515def;
   border: none;
   padding: 8px;
-  margin: 10px;
+  color: white;
+  font-size: 18px;
 }
 .signInContainer .loginContainer .formField .button:hover {
   cursor: pointer;
@@ -110,7 +104,9 @@
 
 .signInContainer .loginContainer .signUp a {
   margin-left: 1vh;
-  color: black;
+  color: #ff8682;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
 .signInContainer .loginContainer .signUp a,
@@ -123,11 +119,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+.inputs input {
+  width: 400px;
 }
 
 .inputs svg {
   position: absolute;
   right: 20px;
-  top: 10px;
+  top: 12px;
   cursor: pointer;
+  font-size: 18px;
+}
+.login_img {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.login_img.test {
+  background-color: #d9d9d95e !important;
+  height: 90%;
+  width: 38%;
+  border-radius: 20px;
+}
+
+.login_img img {
+  height: 90%;
+  width: 100%;
+  object-fit: contain;
+}
+.login_img.test img {
+  height: auto;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.loginContainer h1 {
+  text-transform: capitalize;
+  margin-bottom: 20px;
 }

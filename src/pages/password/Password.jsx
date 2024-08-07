@@ -8,7 +8,6 @@ import LoaderAnimation from "../../components/loader/LoaderAnimation";
 function Password({ toast }) {
   const token = localStorage.getItem("crmToken");
   const [data, setData] = useState([]);
-  // const [viewModal, setviewModal] = useState(false);
   const [password, setPassword] = useState("");
   const [edit, setEdit] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -67,7 +66,7 @@ function Password({ toast }) {
 
         getPassword();
         setLoader(false);
-        toast.success("mahsulot muvaffaqiyatli o'zgartiril! ");
+        toast.success("password muvaffaqiyatli o'zgartiril! ");
       })
       .catch((error) => {
         console.error(error);

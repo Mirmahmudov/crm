@@ -1,5 +1,11 @@
+.test {
+  width: 220px;
+}
+
 .sidebar {
   flex: 1;
+  position: fixed;
+  z-index: 9;
 }
 
 .sidebar .top {
@@ -46,9 +52,7 @@
 }
 .sidebar .centre ul li svg,
 .sidebar .centre ul .ListClick {
-  /* width: 50px; */
   color: rgb(65, 88, 90);
-
   font-size: 25px;
 }
 
